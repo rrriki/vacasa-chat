@@ -1,0 +1,48 @@
+<div class="my-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border">
+
+    <!-- Brand -->
+    <a [routerLink]="['/']" class="navbar-brand">
+      <img src="assets/images/logo.png" alt="Vacasa" height="30" width="30">
+    </a>
+    <!-- Nav Toggler -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Nav Options -->
+    <div class="collapse navbar-collapse" id="toggler">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']">home</a>
+        </li>
+      </ul>
+      <!-- Search
+      <form class="form-inline">
+        <input class="form-control mr-2" type="search" placeholder="Search..." name="search">
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+      </form>
+      -->
+      <!-- Login Info -->
+      <div class="navbar-header ml-3">
+        <a *ngIf="!auth.isAuthenticated()" [routerLink]="['/user/login']">
+          Login
+          <fa-icon [icon]="faUser" size="lg"></fa-icon>
+        </a>
+
+        <div *ngIf="auth.isAuthenticated()" class="nav-item dropdown" data-toggle="dropdown">
+          <a class="nav-link dropdown-toggle">{{auth.currentUser.firstName}}</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">
+              <fa-icon [icon]="faUser" size="sm"></fa-icon>
+              Profile
+            </li>
+            <li (click)="logOut()" class="dropdown-item">
+              <fa-icon [icon]="faSignOut" size="sm"></fa-icon>
+              Logout
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

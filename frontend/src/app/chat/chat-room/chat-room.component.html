@@ -1,0 +1,30 @@
+<div class="row mx-auto p-3">
+  <div class="card w-75 m-auto">
+    <h5 class="card-title m-3">Vacasa Chat</h5>
+    <div class="card-body">
+
+      <ul id="chat-view" class="list-group scrollable">
+        <ng-container *ngFor="let message of messages">
+          <app-chat-message [message]="message"></app-chat-message>
+        </ng-container>
+      </ul>
+
+    </div>
+
+    <div class="card-footer">
+      <div class="input-group">
+        <div class="input-group-append">
+          <fa-icon class="input-group-text" [icon]="faPaperclip"></fa-icon>
+        </div>
+
+        <textarea id="message-box" name="message-box" class="form-control" (keyup.enter)="sendMessage()"
+                  placeholder="Type your message..."></textarea>
+
+        <div class="input-group-append">
+          <fa-icon class="input-group-text" [icon]="faPaperPlane" (click)="sendMessage()"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

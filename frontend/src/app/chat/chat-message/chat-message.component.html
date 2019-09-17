@@ -1,0 +1,10 @@
+<li class="list-group-item m-1" [class.selfMessage]="isFromCurrentUser">
+  <div class="media">
+    <div class="media-body">
+      <img class="img-thumbnail rounded-circle mr-3 fa-pull-left" src="assets/images/logo.png">
+      <h5 class="mb-1">{{message.user.firstName}} {{message.user.lastName}}</h5>
+      <p>{{message.message}}</p>
+    </div>
+    <small class="text-muted fa-pull-right">{{message.date | date: 'short'}}</small>
+  </div>
+</li>
