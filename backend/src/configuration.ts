@@ -1,3 +1,6 @@
+import * as path from "path";
+import * as fs from "fs";
+
 export class Configuration {
 
     static getHttpServerConfig() {
@@ -29,5 +32,13 @@ export class Configuration {
                 useUnifiedTopology: true,
             },
         };
+    }
+
+    static getUploadDirectory() {
+        const uploadPath = path.resolve('./', 'uploads');
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath);
+        }
+        return uploadPath;
     }
 }

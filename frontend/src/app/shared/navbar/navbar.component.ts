@@ -8,8 +8,6 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
-  title = 'Vacasa Chat';
   faUser = faUser;
   faSignOut = faSignOutAlt;
 

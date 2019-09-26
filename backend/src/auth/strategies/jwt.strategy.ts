@@ -16,7 +16,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     }
 
     /**
-     * The return value of this method will be attached to the request (by default under the property user)
+     * The return value of this method will be attached to the request (by default under the property users)
      * @param payload - Decoded token payload
      */
     async validate(payload: JwtPayload): Promise<User> {

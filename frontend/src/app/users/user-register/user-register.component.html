@@ -1,0 +1,71 @@
+<div class="mx-auto w-50">
+  <div class="card p-3">
+    <h4 class="card-title text-center mb-3">Register</h4>
+
+    <form [formGroup]="newUserForm" (ngSubmit)="registerUser(newUserForm.value)" autocomplete="off">
+
+      <div class="profile-photo text-center mb-5">
+        <label for="photo" class="h-100">
+          <img id="profile-photo" src="/assets/images/blank_user.png" class="img-thumbnail rounded">
+        </label>
+        <input id="photo" type="file" accept="image/*" (change)="onPhotoInputChange($event)">
+      </div>
+
+
+      <div class="form-group">
+        <div class="row">
+
+          <div class="col">
+            <label for="first-name">First Name</label>
+            <em
+              *ngIf="newUserForm.controls.firstName?.invalid && (newUserForm.controls.firstName?.touched || isMouseOverSubmit)">Required!</em>
+            <div class="input-group">
+              <input id="first-name" formControlName="firstName" type="text" class="form-control" placeholder="First name">
+            </div>
+          </div>
+          <div class="col">
+            <label for="last-name">Last Name</label>
+            <em
+              *ngIf="newUserForm.controls.lastName?.invalid && (newUserForm.controls.lastName?.touched || isMouseOverSubmit)">Required!</em>
+            <div class="input-group">
+              <input id="last-name" formControlName="lastName" type="text" class="form-control" placeholder="Last name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email </label>
+        <em *ngIf="newUserForm.controls.email?.invalid && (newUserForm.controls.email?.touched || isMouseOverSubmit)">Required!</em>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <fa-icon class="input-group-text" [icon]="faEnvelope"></fa-icon>
+          </div>
+          <input id="email" name="email" formControlName="email" type="text" class="form-control" placeholder="Email..."/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <em
+          *ngIf="newUserForm.controls.password?.invalid && (newUserForm.controls.password?.touched || isMouseOverSubmit)">Required!</em>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <fa-icon class="input-group-text" [icon]="faLock"></fa-icon>
+          </div>
+          <input id="password" name="password" formControlName="password" type="password" class="form-control" placeholder="Password..."/>
+        </div>
+      </div>
+
+      <div class="text-center my-3">
+        <!-- Disabled buttons don't emit events, so wrap it around span -->
+        <span (mouseover)="isMouseOverSubmit = true" (mouseleave)="isMouseOverSubmit=false">
+            <button class="btn btn-primary mx-1" type="submit" [disabled]="newUserForm.invalid">Save</button>
+            </span>
+        <button class="btn btn-secondary m-1" type="button" (click)="cancel()">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+</div>

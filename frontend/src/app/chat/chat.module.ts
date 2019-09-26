@@ -20,7 +20,7 @@ import {ChatMessageComponent} from './chat-message/chat-message.component';
 
   providers: [ChatService],
   exports: [
-    ChatRoomComponent
+    ChatRoomComponent,
   ],
 })
 export class ChatModule {

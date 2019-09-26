@@ -5,13 +5,19 @@ import {Logger} from '@nestjs/common';
 import {Configuration} from './configuration';
 import {ValidationPipe} from './shared/validation.pipe';
 import {HttpExceptionFilter} from './shared/http-exception.filter';
+import {NestExpressApplication} from '@nestjs/platform-express';
 
 async function bootstrap() {
     const logger = new Logger('Main');
     const {port} = Configuration.getHttpServerConfig();
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-    app.enableCors();
+    app.enableCors({
+        origin: '*',
+        maxAge: 3600,
+    });
+
+    app.useStaticAssets(Configuration.getUploadDirectory());
 
     // Set up Swagger documentation
     const options = new DocumentBuilder()

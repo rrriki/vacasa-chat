@@ -1,7 +1,7 @@
 <li class="list-group-item m-1" [class.selfMessage]="isFromCurrentUser">
   <div class="media">
     <div class="media-body">
-      <img class="img-thumbnail rounded-circle mr-3 fa-pull-left" src="assets/images/logo.png">
+      <img class="img-thumbnail rounded-circle mr-3 fa-pull-left" src="{{api_url}}/{{message.user.profilePhoto}}">
       <h5 class="mb-1">{{message.user.firstName}} {{message.user.lastName}}</h5>
       <p>{{message.message}}</p>
     </div>

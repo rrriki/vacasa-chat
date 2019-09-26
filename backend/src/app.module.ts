@@ -1,9 +1,7 @@
 import {Module} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
 import {AuthModule} from './auth/auth.module';
 import {ChatModule} from './chat/chat.module';
-import {UserModule} from './user/user.module';
+import {UserModule} from './users/user.module';
 import {MongooseModule} from '@nestjs/mongoose';
 import {Configuration} from './configuration';
 
@@ -16,8 +14,8 @@ const mongoConfig = Configuration.getMongoConfig();
         UserModule,
         MongooseModule.forRoot(mongoConfig.uri, mongoConfig.options),
     ],
-    controllers: [AppController],
-    providers: [AppService],
+    controllers: [],
+    providers: [],
 })
 export class AppModule {
 }

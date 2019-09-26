@@ -25,7 +25,7 @@ export class UserLoginComponent {
         () => {
           const user = this.auth.getLoggedUser();
           console.log('User is logged in:', user);
-        }
+        },
       );
   }
 

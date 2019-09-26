@@ -6,17 +6,18 @@ import {tap} from 'rxjs/operators';
 import * as moment from 'moment';
 import {User} from '../../../../typing/user.interface';
 import {environment} from '../../environments/environment';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
 
   private currentUser: User;
   private jwtHelper: JwtHelperService;
 
-  constructor(private httpClient: HttpClient, private router: Router) {
-    // Validate if a the user is logged when the page is refresh
+  constructor(private httpClient: HttpClient, private router: Router, private toastr: ToastrService) {
+    // Validate if a the users is logged when the page is refresh
     this.jwtHelper = new JwtHelperService();
 
     if (this.isAuthenticated()) {
@@ -28,35 +29,41 @@ export class AuthService {
     }
   }
 
-  /** Helper method to retrieve token from localStorage **/
+  /**
+   * Helper method to retrieve token from localStorage
+   */
   static getToken(): string {
     return localStorage.getItem('jwt_token');
   }
 
   login(email: string, password: string) {
-    return this.httpClient.post(`${environment.api_url}/auth`, {email, password})
+    return this.httpClient.post(`${environment.api_url}/auth`, {email, password},
+      {headers: {'Referrer-Policy': 'no-referrer-when-downgrade'}})
       .pipe(tap(
         async (authResults) => {
           this.setSession(authResults);
           await this.router.navigate(['/home']);
         },
-        (err) => {
-          console.log(err);
-        })
+        (e) => {
+          const message = e.error.message || e.message;
+          this.toastr.error(message, 'Error login user');
+        }),
       );
   }
 
   async logout() {
     this.currentUser = null;
     localStorage.removeItem('jwt_token');
-    await this.router.navigate(['/user/login']);
+    await this.router.navigate(['/users/login']);
   }
 
   public getLoggedUser() {
     return this.currentUser;
   }
 
-  /** Helper method to validate token status and expiration **/
+  /**
+   * Helper method to validate token status and expiration
+   */
   public isAuthenticated(): boolean {
     const token = AuthService.getToken();
     if (!token) {
@@ -68,7 +75,7 @@ export class AuthService {
   }
 
   /**
-   * Helper function to extract and set the user & token from an auth request
+   * Helper function to extract and set the users & token from an auth request
    * @param authResults - The result from an auth request signIn/register
    */
   private setSession(authResults) {

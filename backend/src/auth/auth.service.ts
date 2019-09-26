@@ -2,7 +2,7 @@ import {Injectable, Logger} from '@nestjs/common';
 import {JwtService} from '@nestjs/jwt';
 
 import {LoginAttemptDto} from './login-attempt.dto';
-import {UserService} from '../user/user.service';
+import {UserService} from '../users/user.service';
 import {Configuration} from '../configuration';
 import {JwtPayload} from '../../../typing/jwt-payload.interface';
 
@@ -16,7 +16,7 @@ export class AuthService {
     ) { }
 
     /**
-     * This will be used when the user is initially logging in with their email and password
+     * This will be used when the users is initially logging in with their email and password
      * @param loginAttempt
      */
     async validateUserByPassword(loginAttempt: LoginAttemptDto) {
@@ -34,7 +34,7 @@ export class AuthService {
     }
 
     /**
-     * This will be used when the user has already logged in and has a JWT
+     * This will be used when the users has already logged in and has a JWT
      * @param payload
      */
     async validateUserByJwt(payload: JwtPayload) {
@@ -43,11 +43,11 @@ export class AuthService {
     }
 
     /**
-     * Add the user info to the payload, and sign it using the JwtService and JWT_SECRET
+     * Add the users info to the payload, and sign it using the JwtService and JWT_SECRET
      * @param payload
      */
     signTokenForPayload(payload) {
-        // TODO: Clean user object for client (remove password, sensitive info)
+        // TODO: Clean users object for client (remove password, sensitive info)
         const data: JwtPayload = {
             user: payload,
         };

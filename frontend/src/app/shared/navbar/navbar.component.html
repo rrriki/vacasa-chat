@@ -16,15 +16,9 @@
           <a class="nav-link" [routerLink]="['/home']">home</a>
         </li>
       </ul>
-      <!-- Search
-      <form class="form-inline">
-        <input class="form-control mr-2" type="search" placeholder="Search..." name="search">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
-      </form>
-      -->
       <!-- Login Info -->
       <div class="navbar-header ml-3">
-        <a *ngIf="!auth.isAuthenticated()" [routerLink]="['/user/login']">
+        <a *ngIf="!auth.isAuthenticated()" [routerLink]="['/users/login']">
           Login
           <fa-icon [icon]="faUser" size="lg"></fa-icon>
         </a>
