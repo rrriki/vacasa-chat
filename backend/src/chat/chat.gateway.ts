@@ -57,7 +57,7 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     @SubscribeMessage('message')
     handleMessage(socket: Socket, message: Message): string {
         logger.log(`Received message from userId: ${message.user._id}`);
-        socket.emit('message', message);
+        this.server.emit('message', message);
         return 'message-sent';
     }
 }
