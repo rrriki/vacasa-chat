@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import {AuthService} from './auth.service';
 import {LoginAttemptDto} from './login-attempt.dto';
 
-@ApiUseTags('auth')
+@ApiUseTags('Auth')
 @Controller('auth')
 export class AuthController {
     constructor(private authService: AuthService) { }

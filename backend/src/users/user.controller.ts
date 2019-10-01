@@ -15,7 +15,7 @@ import {UserService} from './user.service';
 
 import {CreateUserDto} from './create-user.dto';
 import {FindByEmailDto} from './find-by-email.dto';
-import {FileInterceptor} from "@nestjs/platform-express";
+import {FileInterceptor} from '@nestjs/platform-express';
 
 @ApiUseTags('Users')
 @Controller('users')
