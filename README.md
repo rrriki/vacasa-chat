@@ -3,7 +3,7 @@
   
   This is a simple chat, built for [Vacasa](https://www.vacasa.com/)'s Lunch & Learn, and MeetUps,  as proof of concept to teach the concepts of building Node.js backend applications using [Nestjs](https://nestjs.com/).
   
-It uses [Angular](https://angular.io/) for the frontend, and implements a websocket.
+It uses [Angular](https://angular.io/) for the frontend, and implements websocket for real time messaging.
 
 ![Vacasa Chat](https://i.imgur.com/Zoa6u60.png)
 
