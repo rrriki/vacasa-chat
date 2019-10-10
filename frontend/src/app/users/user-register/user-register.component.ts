@@ -73,7 +73,6 @@ export class UserRegisterComponent implements OnInit {
   }
 
   async cancel() {
-    this.toastr.success('register created');
     await this.router.navigate(['/home']);
   }
 }

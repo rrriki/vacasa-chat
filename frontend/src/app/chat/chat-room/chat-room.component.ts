@@ -11,7 +11,7 @@ import {AuthService} from '../../auth/auth.service';
 })
 export class ChatRoomComponent implements OnInit, OnDestroy {
   private readonly room;
-  private messages: Array<Message> = [];
+  private messages: Message[] = [];
   private faPaperclip = faPaperclip;
   private faPaperPlane = faPaperPlane;
 
@@ -49,5 +49,3 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
     await this.chat.sendEvent('leave', this.room);
   }
 }
-
-

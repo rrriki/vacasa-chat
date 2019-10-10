@@ -13,7 +13,7 @@ async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
     app.enableCors({
-        origin: '*',
+        origin: true,
         maxAge: 3600,
     });
 
