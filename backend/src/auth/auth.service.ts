@@ -47,7 +47,6 @@ export class AuthService {
      * @param payload
      */
     signTokenForPayload(payload) {
-        // TODO: Clean users object for client (remove password, sensitive info)
         const data: JwtPayload = {
             user: payload,
         };
