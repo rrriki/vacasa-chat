@@ -1,11 +1,9 @@
 import {
     Controller,
-    Body,
-    Post,
     Get,
     Response,
     HttpStatus,
-    Param, HttpException, UseInterceptors, UploadedFile,
+    Param, HttpException,
 } from '@nestjs/common';
 import {ApiResponse} from '@nestjs/swagger';
 import {ApiUseTags} from '@nestjs/swagger';
@@ -13,9 +11,7 @@ import * as _ from 'lodash';
 
 import {UserService} from './user.service';
 
-import {CreateUserDto} from './create-user.dto';
 import {FindByEmailDto} from './find-by-email.dto';
-import {FileInterceptor} from '@nestjs/platform-express';
 
 @ApiUseTags('Users')
 @Controller('users')
@@ -23,21 +19,7 @@ export class UserController {
 
     constructor(private userService: UserService) { }
 
-    @Post()
-    @ApiResponse({status: HttpStatus.OK, description: 'User created successfully'})
-    @ApiResponse({status: HttpStatus.INTERNAL_SERVER_ERROR, description: 'Error creating users'})
-    @UseInterceptors(FileInterceptor('profilePhoto'))
-    async createUser(@Response() res, @Body() user: CreateUserDto, @UploadedFile() profilePhoto) {
-        try {
-            const newUser = await this.userService.createUser(user, profilePhoto);
-            return res.status(HttpStatus.OK).json(newUser);
-        } catch (e) {
-            if (e.code === 11000) {
-                throw new HttpException('User already exists', HttpStatus.CONFLICT);
-            }
-            throw new HttpException(e.message, e.code);
-        }
-    }
+    // TODO: Add controller route too handle createUser POST
 
     @Get(':email')
     @ApiResponse({status: HttpStatus.OK, description: 'User fetched successfully'})
