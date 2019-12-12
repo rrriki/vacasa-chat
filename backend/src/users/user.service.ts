@@ -1,20 +1,11 @@
 import {Injectable} from '@nestjs/common';
-import {InjectModel} from '@nestjs/mongoose';
-import {Model} from 'mongoose';
-
-import {User} from '../../../typing/user.interface';
-import {CreateUserDto} from './create-user.dto';
 
 @Injectable()
 export class UserService {
-    constructor(@InjectModel('User') private userModel: Model<User>) {
-    }
 
-    async createUser(user: CreateUserDto, photo: any): Promise<User> {
-        const newUser = await new this.userModel({...user, profilePhoto: photo.filename});
-        return newUser.save();
+    // TODO: Inject the UserModel using the @InjectModel decorator from Mongoose
 
-    }
+    // TODO: Implement a createUser method
 
     async findUserByEmail(email: string): Promise<any> {
         return await this.userModel.findOne({email});
