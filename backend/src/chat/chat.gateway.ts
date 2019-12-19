@@ -11,16 +11,16 @@ import {Client, Server, Socket} from 'socket.io';
 import {Message} from '../../../typing/message.interface';
 
 const logger = new Logger('ChatGateway');
-const wssConfig = Configuration.getWSSConfig();
 
-@WebSocketGateway(wssConfig.port)
+@WebSocketGateway()
+
 export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
 
     @WebSocketServer()
     server: Server;
 
     afterInit(server): any {
-        logger.log(`Chat Gateway initialized on port: ${wssConfig.port}`);
+        logger.log('Chat Gateway initialized');
     }
 
     handleConnection(client: Client, ...args): any {
