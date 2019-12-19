@@ -24,10 +24,8 @@ $ npm install --prefix ./backend
   You will need to set up the environment variables, the easiest way to do this, is to create a `.env` file in the backend's root directory with the following variables:
 ```sh
 # SERVER
-  
-WSS_PORT=3000
     
-HTTP_PORT=8080
+PORT=8080
     
 JWT_SECRET=yoursecret
 
@@ -35,6 +33,8 @@ JWT_SECRET=yoursecret
 
 MONGO_URI=mongodb://mongourl/
 ```
+
+Make sure your frontend environment variables match this set-up.
 
 Finally, start both apps, running `npm start` inside each folder (backend & frontend)   
 
