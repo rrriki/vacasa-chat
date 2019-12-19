@@ -5,13 +5,7 @@ export class Configuration {
 
     static getHttpServerConfig() {
         return {
-            port: +process.env.HTTP_PORT,
-        };
-    }
-
-    static getWSSConfig() {
-        return {
-            port: +process.env.WSS_PORT,
+            port: +process.env.PORT,
         };
     }
 
