@@ -5,7 +5,9 @@ Sería bueno que al momento de instalar git, se aceptara la opción para sobrees
 
 ![Unix Tools](https://i.imgur.com/JmE8E1K.png)
 
+<hr>
 
+Opcionalmente, se puede instalar un cliente REST como Insomnia: https://insomnia.rest/
 
 <hr/>
 Instalar globalmente los siguientes paquetes con npm:
