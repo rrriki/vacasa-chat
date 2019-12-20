@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  wss_url: 'http://192.168.1.102:8080',
-  api_url: 'http://192.168.1.102:8080',
+  wss_url: 'http://172.16.23.168:8080',
+  api_url: 'http://172.16.23.168:8080',
 };
 
 /*
