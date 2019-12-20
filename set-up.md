@@ -12,7 +12,10 @@ Opcionalmente, se puede instalar un cliente REST como Insomnia: https://insomnia
 <hr/>
 Instalar globalmente los siguientes paquetes con npm:
 
-
 ```npm install -g typescript@3.2.4```
+
+```npm install -g ts-node```
+
+```npm i -g node-gyp```
 
 ```npm install -g @nestjs/cli@6.6.4```
